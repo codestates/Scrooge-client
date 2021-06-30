@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&family=Poiret+One&display=swap');
+
+// base color
+$white-color: #f1f5ff;
+$black-color: #152253;
+$blue-color: #385ad2;
+$gray-color: #afbfd6;
+$light-gray-color: #d5e0f1;
+
+// font
+$noto-font: 'Noto Sans KR', sans-serif;
+$poiret-font: 'Poiret One', sans-serif;
+
+$font-small: 0.875rem;
+$font-default: 1rem;
+$font-medium: 1.121rem;
+$font-large: 1.5rem;
+$font-Mlarge: 3rem;
+$font-Xlarge: 4rem;
+
+// Breakpoints
+// TODO: px조종 필요
+$breakpoint-mobile: 414px;
+$breakpoint-tablet: 700px;
+$breakpoint-desktop: 1400px;

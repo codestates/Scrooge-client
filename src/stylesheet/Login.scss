@@ -1,0 +1,85 @@
+.signin_modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: $gray-color;
+  backdrop-filter: blur(20px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 27px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $light-gray-color;
+  backdrop-filter: blur(20px);
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    input {
+      margin-top: 5px;
+      margin-bottom: 10px;
+      width: 100%;
+      &:nth-child(4) {
+        margin-bottom: 38px;
+      }
+    }
+  }
+
+  &_email {
+    width: 100%;
+    text-align: left;
+  }
+
+  &_password {
+    width: 100%;
+    text-align: left;
+  }
+  .signin_submit {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@include desktop {
+  .signin_modal {
+    width: 600px;
+    height: 660px;
+    &_form {
+      width: 390px;
+    }
+  }
+}
+
+@include tablet {
+  .signin_modal {
+    width: 60vw;
+    height: 70vh;
+    min-height: 450px;
+    &_form {
+      width: 80%;
+    }
+  }
+}
+
+@include mobile {
+  .signin_modal {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    background-color: #fff;
+    &_form {
+      width: 80%;
+      input {
+        border: 1px solid $gray-color;
+      }
+    }
+  }
+}

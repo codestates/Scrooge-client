@@ -1,0 +1,119 @@
+.daily_form {
+  position: relative;
+  display: flex;
+  width: 100%;
+  .category_dropdown {
+    position: relative;
+    flex: 1;
+    width: auto;
+    margin-right: 15px;
+    .category_toggle_btn {
+      position: relative;
+      min-width: 150px;
+      width: 100%;
+      height: 50px;
+      padding: 15px 32px 15px 17px;
+      text-align: start;
+      background-color: #fff;
+      font-size: $font-default;
+      font-weight: 400;
+      color: $blue-color;
+      border-radius: 16px;
+      cursor: pointer;
+      &_icon {
+        position: absolute;
+        top: 13px;
+        right: 15px;
+        width: 24px;
+        height: 24px;
+      }
+    }
+    .category_menu {
+      position: absolute;
+      z-index: 2;
+      top: 53px;
+      left: 0;
+      width: 100%;
+      height: 0px;
+      overflow: hidden;
+      background-color: #fff;
+      border-radius: 6px;
+      // transition: 0.3s ease-in;
+      cursor: pointer;
+      li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+      }
+    }
+    .category_menu.show {
+      height: auto;
+      box-shadow: 0 3px 5px 0 rgba(63, 65, 80, 0.1);
+    }
+  }
+  .money {
+    position: relative;
+    flex: 2;
+    z-index: 2;
+    margin-right: 15px;
+    width: auto;
+    height: 50px;
+    font-size: $font-default;
+    &_input {
+      font-family: $noto-font;
+      font-size: $font-default;
+      width: 100%;
+      height: 50px;
+    }
+    &_label {
+      font-size: $font-default;
+      font-weight: 400;
+      color: $blue-color;
+      position: absolute;
+      top: 13px;
+      right: 15px;
+    }
+    // &_btn {
+    // }
+  }
+  .memo {
+    margin-right: 15px;
+    font-size: $font-default;
+    height: 50px;
+    flex: 2;
+  }
+}
+
+.date_picker {
+  flex: 1;
+  width: auto;
+  height: 50px;
+  font-size: $font-default;
+  font-weight: 400;
+  color: $blue-color;
+  border-radius: 16px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.daily_form_submit {
+  position: absolute;
+  top: 60px;
+  right: 0px;
+  display: inline-block;
+  width: 197px;
+  height: 34px;
+  color: $white-color;
+  font-size: $font-default;
+  background: linear-gradient(
+      84.73deg,
+      rgba(53, 85, 198, 0.44) 1.92%,
+      rgba(99, 227, 255, 0.44) 100.48%
+    ),
+    #385ad2;
+  border-radius: 13px;
+}
