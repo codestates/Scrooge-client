@@ -225,7 +225,9 @@ function Home() {
                     만들어주는 <strong>스크루지</strong>
                   </h1>
                   <div className="start_btn_group">
-                    <button className="signup_btn">가계부 쓰기</button>
+                    <Link to="/signup">
+                      <button className="signup_btn">가계부 쓰기</button>
+                    </Link>
                     <button
                       className="testLogin scroll_btn"
                       onClick={testLogin}
@@ -464,10 +466,12 @@ function Home() {
                         />
                       </svg>
                     </div>
-                    <button>
-                      <p>스크루지 하기</p>
-                      <ArrowRightIcon className="start_btn_icon" />
-                    </button>
+                    <Link to="/signup">
+                      <button>
+                        <p>스크루지 하기</p>
+                        <ArrowRightIcon className="start_btn_icon" />
+                      </button>
+                    </Link>
                   </div>
                 </div>
                 <div className="review">
@@ -560,7 +564,9 @@ function Home() {
                   놀랄 준비 되셨나요?
                 </h2>
                 <div className="start_btn_group">
-                  <button className="signup_btn">가계부 쓰기</button>
+                  <Link to="/signup">
+                    <button className="signup_btn">가계부 쓰기</button>
+                  </Link>
                   <button className="testLogin scroll_btn" onClick={testLogin}>
                     체험하기
                     <ArrowRightIcon className="scroll_btn_icon" />
