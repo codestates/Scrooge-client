@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  saveModalMessage,
-  socialDataDelete,
-  userSignInRequest,
-} from '../actions';
+import { socialDataDelete, userSignInRequest } from '../actions';
 import { Link } from 'react-router-dom';
 import { MailIcon, XIcon } from '@heroicons/react/outline';
 

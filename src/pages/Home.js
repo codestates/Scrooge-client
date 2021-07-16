@@ -16,6 +16,7 @@ import {
   ChatAlt2Icon,
   GlobeIcon,
   MailIcon,
+  ArrowUpIcon,
 } from '@heroicons/react/outline';
 import Loading from '../components/Loading';
 import Aos from 'aos';
@@ -216,7 +217,7 @@ function Home() {
                   </defs>
                 </svg>
               </div>
-              <section className="home_main">
+              <section id="home" className="home_main">
                 <div className="home_main_article">
                   <h1>
                     <strong>효율적</strong>인 <br />
@@ -748,6 +749,9 @@ function Home() {
               <section className="copyright">
                 <div>ⓒ2021 Team ATM</div>
               </section>
+              <a href="#home" className="page_up">
+                <ArrowUpIcon />
+              </a>
             </div>
           )}
         </>
