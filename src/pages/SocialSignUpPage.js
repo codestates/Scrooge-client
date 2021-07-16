@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { socialData, socialSignUp } from '../actions';
@@ -8,6 +8,7 @@ function SocialSignUpPage({ setModalMessage }) {
   const history = useHistory();
   const socialDataReducer = useSelector((state) => state.socialDataReducer);
   const socialDatas = socialDataReducer.socialData;
+  const [incodingFile, setIncodingFile] = useState(null);
 
   function inputHandler(e) {
     dispatch(socialData({ ...socialDatas, username: e.target.value }));
@@ -21,6 +22,16 @@ function SocialSignUpPage({ setModalMessage }) {
         photo: file,
       })
     );
+    // 인코딩 후 미리보기에 표시
+    if (file) {
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (e) => {
+        setIncodingFile(e.target.result);
+      };
+    } else {
+      setIncodingFile(null);
+    }
   }
 
   let socialsignupRequestHandler = async (e) => {
@@ -47,7 +58,9 @@ function SocialSignUpPage({ setModalMessage }) {
   return (
     <>
       <form className="signup_form">
-        <label htmlFor="photo">사진</label>
+        <label htmlFor="photo" className="photo_label">
+          <img src={incodingFile} alt="" />
+        </label>
         <input
           id="photo"
           name="photo"
@@ -55,6 +68,7 @@ function SocialSignUpPage({ setModalMessage }) {
           accept="image/jpg, image/png, image/jpeg, image/gif"
           onChange={inputPhoto}
           className="photo"
+          required
         />
         <label htmlFor="username">닉네임</label>
         <input

@@ -5,7 +5,6 @@ import {
   googleSignUp,
   kakaoSignUp,
   userSignUpRequest,
-  deleteModalMessage,
 } from '../actions';
 import { Link, useHistory } from 'react-router-dom';
 import Logo from '../components/Logo';
@@ -65,6 +64,7 @@ function Signup() {
   //사이드 이미지 컨트롤러=======================
 
   const [divClass, setClass] = useState('sideImg');
+  const [incodingFile, setIncodingFile] = useState(null);
   const savedCallback = useRef();
 
   function callback() {
@@ -116,10 +116,21 @@ function Signup() {
 
   function inputPhoto(e) {
     let file = e.target.files[0];
+
     setUserInfo({
       ...userInfo,
       photo: file,
     });
+    // 인코딩 후 미리보기에 표시
+    if (file) {
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (e) => {
+        setIncodingFile(e.target.result);
+      };
+    } else {
+      setIncodingFile(null);
+    }
   }
 
   let emailChecker = async (e) => {
@@ -209,7 +220,9 @@ function Signup() {
         ) : emailSignupMod ? (
           <div className="inputZone">
             <form className="signup_form">
-              <label htmlFor="photo">사진</label>
+              <label htmlFor="photo" className="photo_label">
+                <img src={incodingFile} alt="" />
+              </label>
               <input
                 id="photo"
                 name="photo"

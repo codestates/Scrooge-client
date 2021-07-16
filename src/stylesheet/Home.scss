@@ -548,13 +548,12 @@ nav.top_nav {
 }
 .home_footer {
   display: flex;
-  flex-wrap: wrap;
   padding: 40px;
   height: fit-content;
-  font-size: 1.2em;
   line-height: 24px;
   background-color: #fff;
   img {
+    width: 149px;
     margin-bottom: 20px;
   }
   svg {
@@ -568,6 +567,7 @@ nav.top_nav {
   &_scrooge {
     display: flex;
     margin-bottom: 110px;
+    margin-right: 5px;
     padding-right: 145px;
     flex-direction: column;
     border-right: 1px solid $gray-color;
@@ -578,15 +578,35 @@ nav.top_nav {
   .team_atm_member {
     display: flex;
     flex-wrap: wrap;
-    div {
+    width: 100%;
+    justify-content: center;
+    & > div {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      width: 50%;
+    }
+    .individual {
       display: flex;
       flex-direction: column;
+      padding: 10px;
+      width: 250px;
       a {
         margin: 5px 0;
         line-height: 24px;
         svg {
           transform: translate(0, 22%);
           margin-right: 5px;
+        }
+      }
+      .name {
+        display: flex;
+        .badge {
+          margin-left: 8px;
+          padding: 0 9px;
+          background-color: $light-gray-color;
+          border-radius: 50px;
+          text-align: center;
         }
       }
     }
@@ -655,7 +675,10 @@ nav.top_nav {
   }
   .home_footer {
     margin-left: -24px;
+    padding: 20px;
+    flex-direction: column;
     width: calc(100% + (24px * 2));
+    font-size: 1em;
   }
 }
 
@@ -692,6 +715,8 @@ nav.top_nav {
   .home_footer {
     margin-left: -36px;
     width: calc(100% + (36px * 2));
+    flex-direction: row;
+    font-size: 1em;
   }
 }
 
@@ -737,5 +762,10 @@ nav.top_nav {
   .home_footer {
     margin-left: -50px;
     width: calc(100% + (50px * 2));
+    flex-direction: row;
+    font-size: 0.8em;
+    &_scrooge {
+      margin-bottom: 10px;
+    }
   }
 }
