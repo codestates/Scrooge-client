@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import {
-  ArrowNarrowLeftIcon,
-  ArrowNarrowRightIcon,
-} from '@heroicons/react/outline';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 
 function Home_Bottom() {
   const [showItem, setItem] = useState({
@@ -16,7 +13,16 @@ function Home_Bottom() {
   });
 
   const ImgComponent = () => {
-    return <img src={showItem.photo} alt="" />;
+    return (
+      <>
+        <img className="landing_item_photo_gif" src={showItem.photo} alt="" />
+        <img
+          className="landing_item_photo_iphone"
+          src={process.env.PUBLIC_URL + '/iphone.png'}
+          alt=""
+        />
+      </>
+    );
   };
 
   const TitleComponent = () => {
@@ -95,8 +101,22 @@ function Home_Bottom() {
       </h2>
       <div id="landing_item_container" className="landing_item_container">
         <div className="landing_item_literal">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 769 709"
+            fill="none"
+            className="landing_item_postit"
+          >
+            <path
+              d="M33 674L43 635L740.5 33C766 244 771.667 570.333 766 701C622 722.6 217.333 692 33 674Z"
+              fill="#AFBFD6"
+            />
+            <path
+              d="M748.743 25.4786L45.0231 0C45.0231 0 45.0231 582 0 662C0 662 557 703 665.204 685.153C729 662 751.14 246.478 748.743 25.4786Z"
+              fill="#F1F5FF"
+            />
+          </svg>
           <TitleComponent />
-          <div className="top hr" />
           <InformComponent />
         </div>
         <div className="landing_item_photo">
@@ -104,14 +124,8 @@ function Home_Bottom() {
             <ImgComponent />
           </div>
           <div className="landing_item_btns">
-            <ArrowNarrowLeftIcon
-              className="clickMinus"
-              onClick={slideMinusBtn}
-            />
-            <ArrowNarrowRightIcon
-              className="clickPlus"
-              onClick={slidePlusBtn}
-            />
+            <ChevronLeftIcon className="clickMinus" onClick={slideMinusBtn} />
+            <ChevronRightIcon className="clickPlus" onClick={slidePlusBtn} />
           </div>
         </div>
       </div>

@@ -95,50 +95,50 @@ export const checkEmailExists =
 
 // 소셜 로그인
 
-export const getKakaoCode = (authorizationCode) => (dispatch) => {
-  // console.log('카카오에서 받은 코드 : ', authorizationCode);
-  axios
-    .post(`${process.env.REACT_APP_API_URL}/kakaologin`, {
-      authorizationCode,
-    })
-    .then((res) => {
-      if (String(res.data.message).includes('회원가입')) {
-        dispatch(saveModalMessage('카카오 회원가입을 해주세요'));
-      } else {
-        dispatch(userLogin(res.data.data.accessToken, '카카오'));
-        dispatch(deleteModalMessage());
-      }
-    })
-    .catch((err) => {
-      // console.log(err.response);
-      if (err.response.data.message.includes('회원가입')) {
-        dispatch(saveModalMessage('카카오 회원가입을 해주세요'));
-      }
-    });
-};
+export const getKakaoCode =
+  (authorizationCode, setModalMessage) => (dispatch) => {
+    // console.log('카카오에서 받은 코드 : ', authorizationCode);
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/kakaologin`, {
+        authorizationCode,
+      })
+      .then((res) => {
+        if (String(res.data.message).includes('회원가입')) {
+          setModalMessage('카카오 회원가입을 해주세요');
+        } else {
+          dispatch(userLogin(res.data.data.accessToken, '카카오'));
+        }
+      })
+      .catch((err) => {
+        // console.log(err.response);
+        if (err.response.data.message.includes('회원가입')) {
+          setModalMessage('카카오 회원가입을 해주세요');
+        }
+      });
+  };
 
-export const getGoogleCode = (authorizationCode) => (dispatch) => {
-  // console.log('구글에서 받은 코드 : ', authorizationCode);
-  axios
-    .post(`${process.env.REACT_APP_API_URL}/googlelogin`, {
-      authorizationCode,
-    })
-    .then((res) => {
-      // console.log(res);
-      if (String(res.data.message).includes('회원가입')) {
-        dispatch(saveModalMessage('구글 회원가입을 해주세요'));
-      } else {
-        dispatch(userLogin(res.data.data.accessToken, '구글'));
-        dispatch(deleteModalMessage());
-      }
-    })
-    .catch((err) => {
-      // console.log(err.response);
-      if (err.response.data.message.includes('회원가입')) {
-        dispatch(saveModalMessage('구글 회원가입을 해주세요'));
-      }
-    });
-};
+export const getGoogleCode =
+  (authorizationCode, setModalMessage) => (dispatch) => {
+    // console.log('구글에서 받은 코드 : ', authorizationCode);
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/googlelogin`, {
+        authorizationCode,
+      })
+      .then((res) => {
+        // console.log(res);
+        if (String(res.data.message).includes('회원가입')) {
+          setModalMessage('구글 회원가입을 해주세요');
+        } else {
+          dispatch(userLogin(res.data.data.accessToken, '구글'));
+        }
+      })
+      .catch((err) => {
+        // console.log(err.response);
+        if (err.response.data.message.includes('회원가입')) {
+          setModalMessage('구글 회원가입을 해주세요');
+        }
+      });
+  };
 
 // 소셜 회원가입
 export const kakaoSignUp =

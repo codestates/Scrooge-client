@@ -14,9 +14,15 @@
       background-color: white;
       padding: 30px;
     }
+    &_postit {
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      width: 550px;
+      transform: translate(-50%, 0);
+    }
     &_literal {
       width: 60%;
-      background-color: $white-color;
       justify-content: center;
       align-items: center;
       display: flex;
@@ -24,6 +30,9 @@
       border-radius: 16px;
       padding: 30px;
       word-break: keep-all;
+      position: relative;
+
+      z-index: 9;
       &_title {
         height: 40%;
         text-align: center;
@@ -31,7 +40,8 @@
         font-size: 3em;
         margin: auto;
         padding-top: auto;
-        margin-top: 5%;
+        margin-top: 20%;
+        z-index: 9;
       }
       .top.hr {
         margin-bottom: 20%;
@@ -40,6 +50,7 @@
         height: 60%;
         justify-content: space-around;
         font-size: 1.5em;
+        z-index: 9;
       }
     }
     &_photo {
@@ -50,10 +61,23 @@
       align-items: center;
       &_container {
         margin-left: 30px;
-        img {
-          overflow: hidden;
-          max-height: 600px;
-        }
+        position: relative;
+        // img {
+        //   overflow: hidden;
+        //   max-height: 600px;
+        // }
+      }
+      &_gif {
+        position: absolute;
+        width: 260px;
+        height: 530px;
+        border-radius: 20px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        margin-top: 40px;
+      }
+      &_iphone {
+        max-height: 600px;
       }
     }
     &_btns {
@@ -64,10 +88,12 @@
       display: flex;
       svg {
         width: 50px;
-        border: solid 1px $gray-color;
+        border: solid 2px $blue-color;
         border-radius: 10px;
         cursor: pointer;
-        color: $gray-color;
+        color: $blue-color;
+        background: rgba(241, 245, 255, 0.3);
+        backdrop-filter: blur(10px);
       }
       svg:first-child {
         margin-right: 20px;
@@ -84,9 +110,17 @@
         width: calc(100% + (24px * 2));
         margin-left: -24px;
       }
+      &_postit {
+        width: 300px;
+        top: 0;
+      }
       &_literal {
         width: 100%;
+        height: 350px;
         order: 2;
+        &_title {
+          margin-top: 10%;
+        }
       }
 
       &_photo {
@@ -113,6 +147,9 @@
       }
       &_literal {
         width: 100%;
+        &_title {
+          margin-top: 25%;
+        }
         &_photo {
           width: 50%;
           display: flex;

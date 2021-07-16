@@ -63,10 +63,10 @@ function Home() {
     if (!authorizationCode) {
       return;
     } else if (url.pathname === '/' && address.includes('www.googleapis.com')) {
-      dispatch(getGoogleCode(authorizationCode));
+      dispatch(getGoogleCode(authorizationCode, setModalMessage));
       setLoginModal(true);
     } else if (url.pathname === '/') {
-      dispatch(getKakaoCode(authorizationCode));
+      dispatch(getKakaoCode(authorizationCode, setModalMessage));
       setLoginModal(true);
     }
   }, [dispatch]);
