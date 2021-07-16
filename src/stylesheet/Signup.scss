@@ -121,6 +121,7 @@
       height: auto;
       object-fit: cover;
     }
+    cursor: pointer;
     &::after {
       content: '프로필 사진 넣기';
       position: absolute;
