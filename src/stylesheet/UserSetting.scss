@@ -1,0 +1,367 @@
+.user_setting {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  // margin-top: 0;
+  .user_setting_wrap {
+    max-width: 857px;
+    min-width: 327px;
+  }
+}
+.user_setting_edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $noto-font;
+  background-color: white;
+  width: 100%;
+  margin-bottom: 29px;
+  border-radius: 23px;
+  .edit_form {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    .edit_form_photo {
+      position: relative;
+      height: 170px;
+      label {
+        margin-left: 0;
+        position: relative;
+        display: block;
+        width: 170px;
+        height: 170px;
+        overflow: hidden;
+        border-radius: 50%;
+        background-color: $light-gray-color;
+        cursor: pointer;
+      }
+      img {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .image_input {
+        margin: 0;
+        padding: 0;
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+      }
+      &:hover {
+        &::before {
+          z-index: 1;
+          content: '변경';
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 170px;
+          height: 170px;
+          color: #fff;
+          font-size: $font-default;
+          border-radius: 50%;
+          background: rgba(21, 34, 83, 0.3);
+          backdrop-filter: blur(8px);
+          pointer-events: none;
+        }
+      }
+    }
+    .edit_form_info,
+    .edit_form_password {
+      display: flex;
+      flex-direction: column;
+      // align-items: flex-end;
+      width: fit-content;
+      .edit_form_input_group {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        .edit_form_label {
+          margin-left: 0;
+          min-width: 25%;
+        }
+        .edit_input {
+          width: 85%;
+          height: 50px;
+          color: $black-color;
+          font-size: $font-default;
+          font-weight: 500;
+          background-color: #fff;
+          border: 1px solid $gray-color;
+          border-radius: 13px;
+          padding: 15px;
+        }
+        .edit_input_email {
+          color: $gray-color;
+        }
+        &:not(:nth-last-child(2)) {
+          margin-bottom: 15px;
+        }
+      }
+    }
+    .edit_form_password {
+      align-items: space-around;
+    }
+  }
+
+  .edit_submit {
+    margin-top: 30px;
+    margin-left: auto;
+    width: 210px;
+    height: 40px;
+    background: linear-gradient(
+        84.73deg,
+        rgba(53, 85, 198, 0.44) 1.92%,
+        rgba(99, 227, 255, 0.44) 100.48%
+      ),
+      #385ad2;
+    border-radius: 13px;
+    color: $white-color;
+    &.password {
+      margin-top: 5px;
+      width: 227px;
+    }
+  }
+  .back_icon {
+    width: 50px;
+    height: 50px;
+  }
+  .back_btn {
+    position: absolute;
+    top: 25px;
+    left: 15px;
+    margin-bottom: auto;
+    color: $light-gray-color;
+    background-color: inherit;
+  }
+
+  .change_password {
+    margin-left: 25%;
+    color: $blue-color;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.user_setting_bottom {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: $noto-font;
+  color: $black-color;
+  background-color: $white-color;
+  &_items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 13px;
+    background-color: #fff;
+    font-size: $font-medium;
+    width: 100%;
+    max-width: 857px;
+    height: 66px;
+    margin-bottom: 10px;
+    padding: 20px;
+    vertical-align: bottom;
+    &:nth-child(7) {
+      color: red;
+    }
+    .user_setting_bottom_items_btn {
+      background-color: inherit;
+    }
+  }
+  &_save {
+    display: flex;
+    color: $blue-color;
+    margin-top: 2.5px;
+    margin-left: 5px;
+    input,
+    label {
+      cursor: pointer;
+    }
+    button {
+      margin-left: 8px;
+      color: $black-color;
+      font-size: $font-medium;
+      background-color: inherit;
+      &:hover {
+        color: $blue-color;
+      }
+      &:active {
+        opacity: 0.8;
+      }
+    }
+    .radio {
+      margin-right: 15px;
+      font-size: $font-default;
+      input[type='radio'] {
+        position: absolute;
+        opacity: 0;
+        + .radio-label {
+          margin-left: 0px;
+          color: $black-color;
+          &:before {
+            content: '';
+            position: relative;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            vertical-align: middle;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            cursor: pointer;
+            background: $light-gray-color;
+            transition: all 250ms ease;
+          }
+        }
+        &:checked {
+          + .radio-label {
+            &:before {
+              box-shadow: inset 0 0 0 4px $light-gray-color;
+              background: $blue-color;
+            }
+          }
+        }
+        &:active {
+          + .radio-label {
+            &:before {
+              outline: none;
+              background-color: $blue-color;
+            }
+          }
+        }
+        &:disabled {
+          + .radio-label {
+            &:before {
+              box-shadow: inset 0 0 0 4px $light-gray-color;
+              background: $gray-color;
+            }
+          }
+        }
+        + .radio-label {
+          &:empty {
+            &:before {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  &_level {
+    color: $gray-color;
+    margin-top: 2.5px;
+    margin-left: 5px;
+  }
+}
+
+@include mobile {
+  .user_setting {
+    align-items: center;
+    margin-top: 15px;
+  }
+  .edit_form {
+    padding: 30px;
+    flex-direction: column;
+    align-items: center;
+    .edit_form_photo {
+      margin-right: 0px;
+      margin-bottom: 25px;
+    }
+    .edit_form_info,
+    .edit_form_password {
+      .edit_form_input_group {
+        .edit_form_label {
+          font-size: $font-small;
+          word-break: keep-all;
+        }
+      }
+    }
+    .edit_form_password {
+      margin-top: 50px;
+    }
+    .edit_submit {
+      margin-top: 20px;
+      width: 100%;
+    }
+  }
+
+  .user_setting_bottom {
+    &_items {
+      padding: 15px;
+      font-size: $font-default;
+    }
+    &_save {
+      button {
+        font-size: $font-small;
+      }
+      .radio {
+        margin: 0;
+        input[type='radio'] {
+          + .radio-label {
+            font-size: $font-small;
+            &:before {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  .user_setting {
+    align-items: center;
+  }
+  .edit_form {
+    padding: 50px;
+    .edit_form_photo {
+      margin-right: 30px;
+    }
+    .edit_form_info,
+    .edit_form_password {
+      .edit_form_input_group {
+        .edit_form_label {
+          font-size: $font-default;
+        }
+      }
+    }
+    .edit_form_password {
+      margin: 0 83px;
+    }
+  }
+}
+
+@include desktop {
+  .edit_form {
+    padding: 50px;
+    .edit_form_photo {
+      margin-right: 30px;
+    }
+    .edit_form_info,
+    .edit_form_password {
+      .edit_form_input_group {
+        .edit_form_label {
+          font-size: $font-default;
+        }
+      }
+    }
+    .edit_form_password {
+      align-items: space-around;
+      margin: 0 83px;
+    }
+  }
+}

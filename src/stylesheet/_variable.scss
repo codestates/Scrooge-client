@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&family=Montserrat+Alternates:wght@300;500&display=swap');
+
+// base color
+$white-color: #f1f5ff;
+$black-color: #152253;
+$blue-color: #385ad2;
+$gray-color: #afbfd6;
+$light-gray-color: #d5e0f1;
+$red-color: #ff3636;
+
+// font
+$noto-font: 'Noto Sans KR', sans-serif;
+$poiret-font: 'Montserrat Alternates', sans-serif;
+
+$font-small: 0.875rem; // 14px
+$font-default: 1rem; // 16px
+$font-medium: 1.121rem; // 18px
+$font-large: 1.5rem; // 24px
+$font-SMlarge: 2rem; // 32px
+$font-Mlarge: 3rem; // 48px
+$font-Xlarge: 4rem; // 64px
+
+// Breakpoints
+// TODO: px조종 필요
+$breakpoint-mobile: 414px;
+$breakpoint-tablet: 766px;
+$breakpoint-desktop: 1400px;

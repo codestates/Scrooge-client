@@ -1,0 +1,91 @@
+.scrooge {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 100px;
+  height: 110px;
+  transform: translate(-50%, -100%);
+  animation: jumpAnimation 0.5s linear alternate infinite;
+}
+
+.cache_container {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  width: 500px;
+  height: 110px;
+  overflow: hidden;
+  transform: translate(-50%, -100%);
+}
+
+.cache {
+  position: absolute;
+  width: 1100px;
+  height: 110px;
+  transform: translate(-50%);
+  animation: walkingAnimation 3s linear infinite;
+}
+
+.road {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  transform: translate(-50%, -30%);
+}
+
+@keyframes jumpAnimation {
+  0% {
+    transform: translate(-50%, -150%);
+  }
+  100% {
+    transform: translate(-50%, -100%);
+  }
+}
+
+@keyframes walkingAnimation {
+  0% {
+    left: 200%;
+  }
+  100% {
+    left: -150%;
+  }
+}
+
+// mini
+.mini-loading {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .line:not(:last-child) {
+    margin-right: 8px;
+  }
+  .line:nth-last-child(1) {
+    animation: loadingAnimation 0.6s 0.1s linear infinite;
+  }
+  .line:nth-last-child(2) {
+    animation: loadingAnimation 0.6s 0.2s linear infinite;
+  }
+  .line:nth-last-child(3) {
+    animation: loadingAnimation 0.6s 0.3s linear infinite;
+  }
+  .line {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border-radius: 15px;
+    background-color: $gray-color;
+  }
+}
+
+@keyframes loadingAnimation {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 15px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}

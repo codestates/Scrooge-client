@@ -1,0 +1,139 @@
+.signin_modal {
+  z-index: 99999999999;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 27px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $light-gray-color;
+  backdrop-filter: blur(20px);
+
+  .X_btn {
+    position: absolute;
+    top: 23px;
+    right: 23px;
+    width: 33px;
+    height: 33px;
+    color: $blue-color;
+  }
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 50px;
+    input {
+      padding: 0 17px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      width: 100%;
+      height: 50px;
+    }
+  }
+
+  &_email {
+    width: 100%;
+    text-align: left;
+  }
+
+  &_password {
+    width: 100%;
+    text-align: left;
+  }
+  .signin_submit {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  a {
+    color: $blue-color;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .signin_pwinquiry {
+    margin-bottom: 30px;
+    text-align: right;
+  }
+}
+
+.loginBtn_group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 90px;
+
+  .loginBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+    width: 350px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: #fff;
+    .login_SVG {
+      margin-right: 7px;
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .kakaoTalk.loginBtn {
+    background-color: #ffe812;
+  }
+}
+
+@include mobile {
+  .signin_modal {
+    width: calc(100vw - (100vw - 100%));
+    height: 100vh;
+    border-radius: 0;
+    background-color: #fff;
+    &_form {
+      width: 80%;
+      input {
+        border: 1px solid $gray-color;
+        font-size: $font-default;
+      }
+    }
+  }
+  .loginBtn_group {
+    .loginBtn {
+      border: 1px solid $gray-color;
+    }
+    .kakaoTalk.loginBtn {
+      border: none;
+    }
+  }
+}
+
+@include tablet {
+  .signin_modal {
+    width: 60vw;
+    height: 70vh;
+    max-width: 600px;
+    min-height: 450px;
+    background: rgba(241, 245, 255, 0.2);
+    backdrop-filter: blur(20px);
+    &_signin_modal_form {
+      width: 80%;
+    }
+  }
+}
+
+@include desktop {
+  .signin_modal {
+    width: 600px;
+    height: 660px;
+    background: rgba(241, 245, 255, 0.2);
+    backdrop-filter: blur(20px);
+    &_form {
+      width: 390px;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.logo {
+  display: inline-block;
+  position: relative;
+  width: 191px;
+  height: 62px;
+  cursor: pointer;
+}
+
+.eye {
+  &-left {
+    position: absolute;
+    top: 18px;
+    left: 68px;
+  }
+  &-right {
+    position: absolute;
+    top: 18px;
+    left: 99px;
+  }
+}
+
+.pupil {
+  position: absolute;
+  top: 0px;
+  left: 9px;
+
+  width: 14px;
+  height: 32px;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: inherit;
+    height: 14px;
+    border-radius: 50%;
+    background-color: $black-color;
+  }
+}

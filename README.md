@@ -1,1 +1,1 @@
-# Scrooge-client
+# Scrooge

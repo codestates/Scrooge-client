@@ -1,0 +1,101 @@
+// 캘린더 css===========================
+:root {
+  --fc-small-font-size: 0.85em;
+  --fc-page-bg-color: #fff;
+  --fc-neutral-bg-color: rgba(208, 208, 208, 0.3);
+  --fc-neutral-text-color: #808080;
+  --fc-border-color: #ddd;
+
+  --fc-button-text-color: #152253;
+  --fc-button-bg-color: #afbfd6;
+  --fc-button-border-color: #2c3e50;
+  --fc-button-hover-bg-color: #d5e0f1;
+  --fc-button-hover-border-color: #1a252f;
+  --fc-button-active-bg-color: #d5e0f1;
+  --fc-button-active-border-color: #151e27;
+
+  --fc-event-bg-color: #385ad2;
+  --fc-event-border-color: #3788d8;
+  --fc-event-text-color: #fff;
+  --fc-event-selected-overlay-color: rgba(0, 0, 0, 0.25);
+
+  --fc-more-link-bg-color: #d0d0d0;
+  --fc-more-link-text-color: inherit;
+
+  --fc-event-resizer-thickness: 8px;
+  --fc-event-resizer-dot-total-width: 8px;
+  --fc-event-resizer-dot-border-width: 1px;
+
+  --fc-non-business-color: rgba(215, 215, 215, 0.3);
+  --fc-bg-event-color: rgb(143, 223, 130);
+  --fc-bg-event-opacity: 0.3;
+  --fc-highlight-color: rgba(188, 232, 241, 0.3);
+  --fc-today-bg-color: rgba(255, 220, 40, 0.15);
+  --fc-now-indicator-color: red;
+}
+
+.monthlyModal {
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 16px;
+  z-index: 9;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: #fff;
+  filter: drop-shadow(0px 4px 5px rgba(57, 94, 207, 0.25));
+  &_inner {
+    &_date {
+      margin-bottom: 50px;
+    }
+  }
+}
+
+@include mobile {
+  .monthlyModal {
+    width: 300px;
+    height: 250px;
+    &_inner {
+      &_date {
+        font-size: $font-SMlarge;
+        margin-bottom: 30px;
+      }
+      &_cost {
+        font-size: $font-large;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .monthlyModal {
+    &_inner {
+      &_date {
+        font-size: $font-SMlarge;
+      }
+      &_cost {
+        font-size: $font-large;
+      }
+    }
+  }
+}
+
+@include desktop {
+  .monthlyModal {
+    &_inner {
+      &_date {
+        font-size: $font-SMlarge;
+      }
+      &_cost {
+        font-size: $font-large;
+      }
+    }
+  }
+}
