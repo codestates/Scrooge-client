@@ -1,9 +1,9 @@
-import axios from 'axios';
-import xlsx from 'xlsx';
+import axios from "axios";
+import xlsx from "xlsx";
 
-export const HELLO_LOADING = 'HELLO_LOADING';
-export const HELLO_SUCCESS = 'HELLO_SUCCESS';
-export const HELLO_ERROR = 'HELLO_ERROR';
+export const HELLO_LOADING = "HELLO_LOADING";
+export const HELLO_SUCCESS = "HELLO_SUCCESS";
+export const HELLO_ERROR = "HELLO_ERROR";
 
 // # HELLO
 export const hello = () => (dispatch) => {
@@ -23,8 +23,8 @@ export const hello = () => (dispatch) => {
 
 // # AUTH
 // 로그인 상태 ==========================================
-export const USER_LOGIN = 'USER_LOGIN';
-export const USER_LOGOUT = 'USER_LOGOUT';
+export const USER_LOGIN = "USER_LOGIN";
+export const USER_LOGOUT = "USER_LOGOUT";
 
 export const userLogin = (accessToken, path) => {
   return {
@@ -54,7 +54,7 @@ export const userLogOut =
     axios
       .get(`${process.env.REACT_APP_API_URL}/signout`, {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           authorization: `bearer ${accessToken}`,
         },
         withCredentials: true,
@@ -62,17 +62,17 @@ export const userLogOut =
       .then((res) => {
         dispatch({ type: USER_LOGOUT });
         dispatch(deleteUserInfo());
-        history.push({ pathname: '/' });
+        history.push({ pathname: "/" });
         if (path) {
-          setModalMessage('테스트');
+          setModalMessage("테스트");
         }
       });
   };
 
 // 이메일 확인 ==========================================
-export const EMAIL_SIGNUP = 'EMAIL_SIGNUP';
-export const EMAIL_SIGNUP_SUCCESS = 'EMAIL_SIGNUP_SUCCESS';
-export const EMAIL_SIGNUP_ERROR = 'EMAIL_SIGNUP_ERROR';
+export const EMAIL_SIGNUP = "EMAIL_SIGNUP";
+export const EMAIL_SIGNUP_SUCCESS = "EMAIL_SIGNUP_SUCCESS";
+export const EMAIL_SIGNUP_ERROR = "EMAIL_SIGNUP_ERROR";
 
 export const checkEmailExists =
   (email, history, setModalMessage) => (dispatch) => {
@@ -82,7 +82,7 @@ export const checkEmailExists =
         `${process.env.REACT_APP_API_URL}/checkemail`,
         { email },
         {
-          headers: { 'Content-Type': 'application/json' },
+          headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       )
@@ -91,7 +91,7 @@ export const checkEmailExists =
       })
       .catch((err) => {
         dispatch({ type: EMAIL_SIGNUP_ERROR });
-        setModalMessage('이미 가입된 이메일입니다');
+        setModalMessage("이미 가입된 이메일입니다");
       });
   };
 
@@ -111,16 +111,16 @@ export const getKakaoCode =
         }
       )
       .then((res) => {
-        if (String(res.data.message).includes('회원가입')) {
-          setModalMessage('카카오 회원가입을 해주세요');
+        if (String(res.data.message).includes("회원가입")) {
+          setModalMessage("카카오 회원가입을 해주세요");
         } else {
-          dispatch(userLogin(res.data.data.accessToken, '카카오'));
+          dispatch(userLogin(res.data.data.accessToken, "카카오"));
         }
       })
       .catch((err) => {
         // console.log(err.response);
-        if (err.response.data.message.includes('회원가입')) {
-          setModalMessage('카카오 회원가입을 해주세요');
+        if (err.response.data.message.includes("회원가입")) {
+          setModalMessage("카카오 회원가입을 해주세요");
         }
       });
   };
@@ -140,16 +140,16 @@ export const getGoogleCode =
       )
       .then((res) => {
         // console.log(res);
-        if (String(res.data.message).includes('회원가입')) {
-          setModalMessage('구글 회원가입을 해주세요');
+        if (String(res.data.message).includes("회원가입")) {
+          setModalMessage("구글 회원가입을 해주세요");
         } else {
-          dispatch(userLogin(res.data.data.accessToken, '구글'));
+          dispatch(userLogin(res.data.data.accessToken, "구글"));
         }
       })
       .catch((err) => {
         // console.log(err.response);
-        if (err.response.data.message.includes('회원가입')) {
-          setModalMessage('구글 회원가입을 해주세요');
+        if (err.response.data.message.includes("회원가입")) {
+          setModalMessage("구글 회원가입을 해주세요");
         }
       });
   };
@@ -199,8 +199,8 @@ export const googleSignUp =
       });
   };
 
-export const SOCIAL_DATA = 'SOCIAL_DATA';
-export const SOCIAL_DELETE = 'SOCIAL_DELETE';
+export const SOCIAL_DATA = "SOCIAL_DATA";
+export const SOCIAL_DELETE = "SOCIAL_DELETE";
 
 export const socialData = (socialData) => (dispatch) => {
   dispatch({ type: SOCIAL_DATA, socialData: socialData });
@@ -219,7 +219,7 @@ export const socialSignUp = (fd, history) => (dispatch) => {
       // console.log(res.data.message);
       dispatch({ type: SOCIAL_DELETE });
       dispatch(goToHome(history));
-      dispatch(saveModalMessage('회원가입 성공!'));
+      dispatch(saveModalMessage("회원가입 성공!"));
     })
     .catch((err) => {
       // console.log(err.response);
@@ -231,14 +231,14 @@ export const userSignUpRequest =
   (fd, history, setModalMessage) => (dispatch) => {
     axios
       .post(`${process.env.REACT_APP_API_URL}/signup`, fd, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+        headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       })
       .then((res) => {
         // console.log(res.data.message);
         dispatch({ type: EMAIL_SIGNUP }); //이메일 체크 완료상태 펄스로 바꾸기
         dispatch(goToHome(history));
-        setModalMessage('회원가입 성공!');
+        setModalMessage("회원가입 성공!");
       })
       .catch((err) => {
         // console.log(err.response);
@@ -246,8 +246,8 @@ export const userSignUpRequest =
   };
 
 // 로그인 ==========================================
-export const USER_SIGNIN = 'USER_SIGNIN';
-export const USER_SIGNIN_ERROR = 'USER_SIGNIN_ERROR';
+export const USER_SIGNIN = "USER_SIGNIN";
+export const USER_SIGNIN_ERROR = "USER_SIGNIN_ERROR";
 
 export const userSignInRequest = (loginInfo, setModalMessage) => (dispatch) => {
   dispatch({ type: USER_SIGNIN });
@@ -256,7 +256,7 @@ export const userSignInRequest = (loginInfo, setModalMessage) => (dispatch) => {
       `${process.env.REACT_APP_API_URL}/login`,
       { email: loginInfo.email, password: loginInfo.password },
       {
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
         withCredentials: true,
       }
     )
@@ -265,14 +265,14 @@ export const userSignInRequest = (loginInfo, setModalMessage) => (dispatch) => {
     })
     .catch(() => {
       dispatch({ type: USER_SIGNIN_ERROR });
-      setModalMessage('이메일 혹은 비밀번호가 잘못 입력되었습니다');
+      setModalMessage("이메일 혹은 비밀번호가 잘못 입력되었습니다");
     });
 };
 
 // 비밀번호 찾기
-export const PWINQUIRY_INIT = 'PWINQUIRY_INIT';
-export const PWINQUIRY_SUCCESS = 'PWINQUIRY_SUCCESS';
-export const PWINQUIRY_ERROR = 'PWINQUIRY_ERROR';
+export const PWINQUIRY_INIT = "PWINQUIRY_INIT";
+export const PWINQUIRY_SUCCESS = "PWINQUIRY_SUCCESS";
+export const PWINQUIRY_ERROR = "PWINQUIRY_ERROR";
 export const pwinquiryInit = () => {
   return {
     type: PWINQUIRY_INIT,
@@ -285,7 +285,7 @@ export const pwinquiry = (data) => (dispatch) => {
       `${process.env.REACT_APP_API_URL}/findpassword`,
       { email: data },
       {
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
         withCredentials: true,
       }
     )
@@ -300,13 +300,13 @@ export const pwinquiry = (data) => (dispatch) => {
 // # 겟
 // 홈으로 이동
 export const goToHome = (history) => () => {
-  history.push('/');
+  history.push("/");
 };
 
 // #USERINFO ===================
-export const GET_USERINFO = 'GET_USERINFO';
-export const GET_USERINFO_SUCCESS = 'GET_USERINFO_SUCCESS';
-export const DELETE_USERINFO = 'DELETE_USERINFO';
+export const GET_USERINFO = "GET_USERINFO";
+export const GET_USERINFO_SUCCESS = "GET_USERINFO_SUCCESS";
+export const DELETE_USERINFO = "DELETE_USERINFO";
 
 export const getUserInfo = (accessToken, history) => (dispatch) => {
   dispatch({ type: GET_USERINFO });
@@ -339,8 +339,8 @@ export const deleteUserInfo = () => (dispatch) => {
 };
 
 // #DAILY ================================
-export const GET_DAILY = 'GET_DAILY';
-export const GET_DAILY_SUCCESS = 'GET_DAILY_SUCCESS';
+export const GET_DAILY = "GET_DAILY";
+export const GET_DAILY_SUCCESS = "GET_DAILY_SUCCESS";
 
 export const getDaily = (accessToken) => (dispatch) => {
   dispatch({ type: GET_DAILY });
@@ -378,7 +378,7 @@ export const postDaily = (data, accessToken) => (dispatch) => {
       },
       {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           authorization: `bearer ${accessToken}`,
         },
         withCredentials: true,
@@ -405,7 +405,7 @@ export const editDaily = (data, accessToken) => (dispatch) => {
       },
       {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           authorization: `bearer ${accessToken}`,
         },
         withCredentials: true,
@@ -428,7 +428,7 @@ export const deleteDaily = (data, accessToken) => (dispatch) => {
       },
       {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           authorization: `bearer ${accessToken}`,
         },
         withCredentials: true,
@@ -450,7 +450,7 @@ export const categoryFilter = (data, accessToken) => (dispatch) => {
     };
   } else if (data.date) {
     result = {
-      message: 'dateSort',
+      message: "dateSort",
     };
   } else if (data.memo) {
     result = {
@@ -461,7 +461,7 @@ export const categoryFilter = (data, accessToken) => (dispatch) => {
   axios
     .post(`${process.env.REACT_APP_API_URL}/categorysort`, result, {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         authorization: `bearer ${accessToken}`,
       },
       withCredentials: true,
@@ -473,13 +473,13 @@ export const categoryFilter = (data, accessToken) => (dispatch) => {
 
 // 설정 ==========================
 // 유저정보 수정
-export const USER_EDIT = 'USER_EDIT';
+export const USER_EDIT = "USER_EDIT";
 
 export const userEdit = (fd, accessToken, history) => (dispatch) => {
   axios
     .post(`${process.env.REACT_APP_API_URL}/fixuserinfo`, fd, {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
         authorization: `bearer ${accessToken}`,
       },
       withCredentials: true,
@@ -491,7 +491,7 @@ export const userEdit = (fd, accessToken, history) => (dispatch) => {
     });
 };
 
-export const PASSWORD_EDIT = 'PASSWORD_EDIT';
+export const PASSWORD_EDIT = "PASSWORD_EDIT";
 
 export const passwordEdit =
   (data, accessToken, setModalMessage) => (dispatch) => {
@@ -510,7 +510,7 @@ export const passwordEdit =
       .then((res) => {
         // console.log(res);
         // dispatch(userLogOut(accessToken, history));
-        setModalMessage('비밀번호 변경이 완료되었습니다');
+        setModalMessage("비밀번호 변경이 완료되었습니다");
       })
       .catch((err) => {
         // console.log(err);
@@ -547,11 +547,11 @@ export const deleteUser = (accessToken, history) => async (dispatch) => {
     .then((res) => {
       // console.log(res);
       dispatch({ type: USER_LOGOUT });
-      history.push({ pathname: '/' });
+      history.push({ pathname: "/" });
     })
     .catch((err) => {
       // console.log(err.response);
-      alert('회원 탈퇴 요청을 실패했습니다');
+      alert("회원 탈퇴 요청을 실패했습니다");
     });
 };
 
@@ -566,17 +566,17 @@ export const deleteData = (accessToken, history) => async (dispatch) => {
     .then((res) => {
       // console.log(res);
       //await dispatch({ type:  }); // 전체 데이터 삭제
-      history.push({ pathname: '/daily' });
+      history.push({ pathname: "/daily" });
     })
     .catch((err) => {
       // console.log(err.response);
-      alert('데이터 삭제 요청이 거절되었습니다');
+      alert("데이터 삭제 요청이 거절되었습니다");
     });
 };
 
 //월별 데이터
 
-export const MONTHLY_DATA = 'MONTHLY_DATA';
+export const MONTHLY_DATA = "MONTHLY_DATA";
 
 export const monthlyData = (accessToken, monthlyBudget) => (dispatch) => {
   axios
@@ -600,7 +600,7 @@ export const monthlyData = (accessToken, monthlyBudget) => (dispatch) => {
 };
 
 //연도별 데이터
-export const YEARLY_DATA = 'YEARLY_DATA';
+export const YEARLY_DATA = "YEARLY_DATA";
 
 export const yearlyList = (accessToken) => (dispatch) => {
   axios
@@ -620,10 +620,10 @@ export const yearlyList = (accessToken) => (dispatch) => {
 };
 
 // 예산 =============================
-export const GET_BUDGET = 'GET_BUDGET';
-export const GET_BUDGET_SUCCESS = 'GET_BUDGET_SUCCESS';
-export const GET_BUDGET_ERROR = 'GET_BUDGET_ERROR';
-export const CREATE_BUDGET_ERROR = 'CREATE_BUDGET_ERROR';
+export const GET_BUDGET = "GET_BUDGET";
+export const GET_BUDGET_SUCCESS = "GET_BUDGET_SUCCESS";
+export const GET_BUDGET_ERROR = "GET_BUDGET_ERROR";
+export const CREATE_BUDGET_ERROR = "CREATE_BUDGET_ERROR";
 
 export const getBudget = (accessToken) => (dispatch) => {
   dispatch({ type: GET_BUDGET });
@@ -703,7 +703,7 @@ export const deleteBudget = (data, accessToken) => (dispatch) => {
 
 // Nav 이펙트
 
-export const NAV_EFFECT = 'NAV_EFFECT';
+export const NAV_EFFECT = "NAV_EFFECT";
 export const navEffect = (data) => {
   return {
     type: NAV_EFFECT,
@@ -712,9 +712,9 @@ export const navEffect = (data) => {
 };
 
 // Yearly ================================================== // 액션 객체 생성 함수
-export const GET_EXCEL = 'GET_EXCEL'; // 로딩값이 있는 경우 사용한다.
-export const GET_EXCEL_SUCCESS = 'GET_EXCEL_SUCCESS';
-export const GET_EXCEL_ERROR = 'GET_EXCEL_ERROR';
+export const GET_EXCEL = "GET_EXCEL"; // 로딩값이 있는 경우 사용한다.
+export const GET_EXCEL_SUCCESS = "GET_EXCEL_SUCCESS";
+export const GET_EXCEL_ERROR = "GET_EXCEL_ERROR";
 // 액션 타입 설정
 
 export const importExcel = (accessToken) => (dispatch) => {
@@ -727,8 +727,8 @@ export const importExcel = (accessToken) => (dispatch) => {
       // console.log(res.data.data.costList);
       const book = xlsx.utils.book_new();
       const costList = res.data.data.costList;
-      xlsx.utils.book_append_sheet(book, costList, 'costList');
-      xlsx.writeFile(book, 'costList.xlsx');
+      xlsx.utils.book_append_sheet(book, costList, "costList");
+      xlsx.writeFile(book, "costList.xlsx");
     })
     .catch((err) => {
       // console.log(err.response);
@@ -736,10 +736,10 @@ export const importExcel = (accessToken) => (dispatch) => {
 };
 
 //모달 메세지
-export const SAVE_MODAL_MESSAGE = 'SAVE_MODAL_MESSAGE';
-export const DELETE_MODAL_MESSAGE = 'DELETE_MODAL_MESSAGE';
-export const IS_MODAL_TRUE = 'IS_MODAL_TRUE';
-export const IS_MODAL_FALSE = 'IS_MODAL_FALSE';
+export const SAVE_MODAL_MESSAGE = "SAVE_MODAL_MESSAGE";
+export const DELETE_MODAL_MESSAGE = "DELETE_MODAL_MESSAGE";
+export const IS_MODAL_TRUE = "IS_MODAL_TRUE";
+export const IS_MODAL_FALSE = "IS_MODAL_FALSE";
 
 export const saveModalMessage = (message) => (dispatch) => {
   dispatch({ type: SAVE_MODAL_MESSAGE, message: message });
@@ -753,19 +753,15 @@ export const deleteModalMessage = () => (dispatch) => {
 export const experimentLogin = (setModalMessage) => (dispatch) => {
   dispatch({ type: USER_SIGNIN });
   axios
-    .post(
-      `${process.env.REACT_APP_API_URL}/login`,
-      { email: 'scrooge@gmail.com', password: '123456' },
-      {
-        headers: { 'Content-Type': 'application/json' },
-        withCredentials: true,
-      }
-    )
+    .post(`${process.env.REACT_APP_API_URL}/login`, {
+      email: "scrooge@gmail.com",
+      password: "123456",
+    })
     .then((res) => {
       dispatch(userLogin(res.data.data.accessToken));
     })
     .catch(() => {
       dispatch({ type: USER_SIGNIN_ERROR });
-      setModalMessage('이메일 혹은 비밀번호가 잘못 입력되었습니다');
+      setModalMessage("이메일 혹은 비밀번호가 잘못 입력되었습니다");
     });
 };
