@@ -55,7 +55,7 @@
       &:hover {
         &::before {
           z-index: 1;
-          content: '변경';
+          content: "변경";
           position: absolute;
           top: 0;
           left: 0;
@@ -87,6 +87,8 @@
         .edit_form_label {
           margin-left: 0;
           min-width: 25%;
+          width: 120px;
+          word-break: keep-all;
         }
         .edit_input {
           width: 85%;
@@ -204,14 +206,14 @@
     .radio {
       margin-right: 15px;
       font-size: $font-default;
-      input[type='radio'] {
+      input[type="radio"] {
         position: absolute;
         opacity: 0;
         + .radio-label {
           margin-left: 0px;
           color: $black-color;
           &:before {
-            content: '';
+            content: "";
             position: relative;
             border-radius: 50%;
             display: inline-block;
@@ -308,7 +310,7 @@
       }
       .radio {
         margin: 0;
-        input[type='radio'] {
+        input[type="radio"] {
           + .radio-label {
             font-size: $font-small;
             &:before {
