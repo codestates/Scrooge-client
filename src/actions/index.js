@@ -10,7 +10,9 @@ export const hello = () => (dispatch) => {
   dispatch({ type: HELLO_LOADING });
 
   axios
-    .get(`${process.env.REACT_APP_API_URL}/`)
+    .get(`${process.env.REACT_APP_API_URL}/`, {
+      withCredentials: true,
+    })
     .then((res) => {
       dispatch({ type: HELLO_SUCCESS, photos: res.data.data.landingPhotos });
     })
@@ -99,9 +101,15 @@ export const getKakaoCode =
   (authorizationCode, setModalMessage) => (dispatch) => {
     // console.log('카카오에서 받은 코드 : ', authorizationCode);
     axios
-      .post(`${process.env.REACT_APP_API_URL}/kakaologin`, {
-        authorizationCode,
-      })
+      .post(
+        `${process.env.REACT_APP_API_URL}/kakaologin`,
+        {
+          authorizationCode,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         if (String(res.data.message).includes('회원가입')) {
           setModalMessage('카카오 회원가입을 해주세요');
@@ -121,9 +129,15 @@ export const getGoogleCode =
   (authorizationCode, setModalMessage) => (dispatch) => {
     // console.log('구글에서 받은 코드 : ', authorizationCode);
     axios
-      .post(`${process.env.REACT_APP_API_URL}/googlelogin`, {
-        authorizationCode,
-      })
+      .post(
+        `${process.env.REACT_APP_API_URL}/googlelogin`,
+        {
+          authorizationCode,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         // console.log(res);
         if (String(res.data.message).includes('회원가입')) {
@@ -144,9 +158,15 @@ export const getGoogleCode =
 export const kakaoSignUp =
   (authorizationCode, history, setModalMessage) => (dispatch) => {
     axios
-      .post(`${process.env.REACT_APP_API_URL}/kakaocheck`, {
-        authorizationCode,
-      })
+      .post(
+        `${process.env.REACT_APP_API_URL}/kakaocheck`,
+        {
+          authorizationCode,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         // console.log('KSU is', res);
         dispatch(socialData({ email: res.data.data }));
@@ -160,9 +180,15 @@ export const kakaoSignUp =
 export const googleSignUp =
   (authorizationCode, history, setModalMessage) => (dispatch) => {
     axios
-      .post(`${process.env.REACT_APP_API_URL}/googlecheck`, {
-        authorizationCode,
-      })
+      .post(
+        `${process.env.REACT_APP_API_URL}/googlecheck`,
+        {
+          authorizationCode,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         // console.log('GSU said', res);
         dispatch(socialData({ email: res.data.data }));
@@ -186,7 +212,9 @@ export const socialDataDelete = () => (dispatch) => {
 
 export const socialSignUp = (fd, history) => (dispatch) => {
   axios
-    .post(`${process.env.REACT_APP_API_URL}/socialsignup`, fd)
+    .post(`${process.env.REACT_APP_API_URL}/socialsignup`, fd, {
+      withCredentials: true,
+    })
     .then((res) => {
       // console.log(res.data.message);
       dispatch({ type: SOCIAL_DELETE });
